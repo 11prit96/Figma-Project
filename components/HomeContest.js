@@ -15,6 +15,8 @@ export default function HomeContest() {
   const contestGrid1isVisible = useOnScreen(contestGrids, 0);
   const contestGrid2isVisible = useOnScreen(contestGrids, 1);
   const contestGrid3isVisible = useOnScreen(contestGrids, 2);
+  const spinningImageRef = useRef(null)
+  const spinningImageIsVisible = useOnScreen(spinningImageRef)
 
   return (
     <div
@@ -294,7 +296,9 @@ export default function HomeContest() {
               <img
                 src="/invest 1.png"
                 alt="invest 1"
-                className="contest_logo"
+                className={`contest_logo ${spinningImageIsVisible && "logo_spin"}`}
+                ref={spinningImageRef}
+                
               />
               <Box
                 sx={{

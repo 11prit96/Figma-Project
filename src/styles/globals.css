@@ -70,6 +70,12 @@ body {
   top: -30%;
   right: 1rem;
   width: 100px;
+  transform: rotateZ(0);
+  transition: all 0.75s;
+}
+
+.contest_logo.logo_spin {
+  transform: rotateZ(180deg);
 }
 
 .payment_partners {
