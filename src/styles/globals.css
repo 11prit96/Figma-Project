@@ -82,6 +82,12 @@ body {
   width: 50%;
   height: 40px;
   object-fit: cover;
+  transform: scale(0.7);
+  transition: all 0.75s;
+}
+
+.payment_partners.scale_up{
+  transform: scale(1);
 }
 
 .os_picture {

@@ -15,8 +15,12 @@ export default function HomeContest() {
   const contestGrid1isVisible = useOnScreen(contestGrids, 0);
   const contestGrid2isVisible = useOnScreen(contestGrids, 1);
   const contestGrid3isVisible = useOnScreen(contestGrids, 2);
-  const spinningImageRef = useRef(null)
-  const spinningImageIsVisible = useOnScreen(spinningImageRef)
+  const spinningImageRef = useRef(null);
+  const spinningImageIsVisible = useOnScreen(spinningImageRef);
+  const razorPayRef = useRef(null);
+  const payTMRef = useRef(null);
+  const razorPayImageIsVisible = useOnScreen(razorPayRef);
+  const PayTMImageIsVisible = useOnScreen(payTMRef);
 
   return (
     <div
@@ -296,9 +300,10 @@ export default function HomeContest() {
               <img
                 src="/invest 1.png"
                 alt="invest 1"
-                className={`contest_logo ${spinningImageIsVisible && "logo_spin"}`}
+                className={`contest_logo ${
+                  spinningImageIsVisible && "logo_spin"
+                }`}
                 ref={spinningImageRef}
-                
               />
               <Box
                 sx={{
@@ -352,7 +357,10 @@ export default function HomeContest() {
                 <img
                   src="/download__3_-removebg-preview 1.png"
                   alt="razorPay"
-                  className="payment_partners"
+                  className={`payment_partners ${
+                    razorPayImageIsVisible && "scale_up"
+                  }`}
+                  ref={razorPayRef}
                 />
                 <div
                   style={{
@@ -364,7 +372,10 @@ export default function HomeContest() {
                 <img
                   src="/download__5_-removebg-preview 1.png"
                   alt="payTM"
-                  className="payment_partners"
+                  className={`payment_partners ${
+                    PayTMImageIsVisible && "scale_up"
+                  }`}
+                  ref={payTMRef}
                 />
               </Box>
               <Typography
