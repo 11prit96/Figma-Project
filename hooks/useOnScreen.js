@@ -10,7 +10,7 @@ function useOnScreen(ref, index) {
         : ref.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const visible =
-        position.top < (3 * windowHeight) / 4 && position.bottom >= 0;
+        position.top < windowHeight / 2 && position.bottom >= 0;
       setIsVisible(visible);
     }
 

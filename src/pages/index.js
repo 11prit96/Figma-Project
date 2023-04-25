@@ -14,6 +14,7 @@ import { useCallback, useState } from "react";
 import theme from "../../theme/theme";
 import Sidebar from "../../components/Sidebar";
 import { useMemo } from "react";
+import { IconButton } from "@mui/material";
 
 export default function Home() {
   const [sidebar, setSidebar] = useState(false);
@@ -33,20 +34,27 @@ export default function Home() {
       </Head>
       <main style={{ position: "relative" }}>
         {!sidebar && (
-          <MenuIcon
+          <IconButton
             sx={{
-              position: "absolute",
+              position: "fixed",
               top: "1rem",
               right: "1rem",
+              zIndex: "1",
+              width: "3rem",
+              backgroundColor: "rgba(0,0,0,0.4)",
               display: { xs: "block", md: "none" },
-              color: theme.palette.text.light,
-              cursor: "pointer",
-              "&:hover": {
-                color: theme.palette.secondary.light,
-              },
             }}
             onClick={() => openSidebar()}
-          />
+          >
+            <MenuIcon
+              sx={{
+                color: theme.palette.text.light,
+                "&:hover": {
+                  color: theme.palette.secondary.light,
+                },
+              }}
+            />
+          </IconButton>
         )}
 
         {(hasTransitionedIn || sidebar) && (

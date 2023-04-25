@@ -20,11 +20,25 @@ export default function Sidebar({ setSidebar, hasTransitionedIn, sidebar }) {
     document.addEventListener("mousedown", handleOutsideClick);
   }, [handleOutsideClick]);
 
+  // useEffect(() => {
+  //   document
+  //     .getElementById("sidebarContainer")
+  //     .addEventListener("onmouseover", () => {
+  //       document.body.style.overflow = "hidden";
+  //     });
+  //   document
+  //     .getElementById("sidebarContainer")
+  //     .addEventListener("onmouseout", () => {
+  //       document.body.style.overflow = "auto";
+  //     });
+  // }, []);
+
   return (
     <Box
       sx={{
         width: "100vw",
-        height: "100%",
+        height: "100vh",
+        overflowY: "none",
         backgroundColor: "rgba(0,0,0,0.3)",
         zIndex: "100",
         position: "fixed",
@@ -33,7 +47,9 @@ export default function Sidebar({ setSidebar, hasTransitionedIn, sidebar }) {
         bottom: 0,
         left: 0,
         backdropFilter: "blur(5px)",
+        overscrollBehavior: "none",
       }}
+      id="sidebarContainer"
     >
       <Box
         sx={{}}
@@ -69,14 +85,25 @@ export default function Sidebar({ setSidebar, hasTransitionedIn, sidebar }) {
             className={`close_icon ${!sidebar && "invisible"}`}
             onClick={() => setSidebar(false)}
           />
-          {navItems.map((item, index) => (
-            <p
-              key={index}
-              className={`sidebar_menu_items ${!sidebar && "invisible"}`}
-            >
-              {item}
-            </p>
-          ))}
+          <Box
+            sx={{
+              height: "100%",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexDirection: "column",
+            }}
+          >
+            {navItems.map((item, index) => (
+              <p
+                key={index}
+                className={`sidebar_menu_items ${!sidebar && "invisible"}`}
+              >
+                {item}
+              </p>
+            ))}
+          </Box>
         </Box>
       </Box>
     </Box>
