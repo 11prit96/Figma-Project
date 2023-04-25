@@ -1,6 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import { Box, Button, Card, Grid, Typography } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import theme from "../theme/theme";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -10,11 +17,6 @@ const gridData1 = {
   title: "Norem ipsum dolor",
   subtitle: "Dorem ipsum dolor sit amet, consectetur edipiscing elit.",
 };
-
-let arr1 = [];
-for (let i = 0; i < 8; i++) {
-  arr1.push(gridData1);
-}
 
 const gameData = [
   {
@@ -35,6 +37,10 @@ const gameData = [
 ];
 
 export default function HomeApps() {
+  let arr1 = useMemo(() => {
+    return Array.from(Array(8), (x) => (x = gridData1));
+  }, [gridData1]);
+
   const slideContainerRef = useRef();
   const [slideContainer, setSlideContainer] = useState(null);
   const gameContainerRef = useRef();
@@ -45,17 +51,17 @@ export default function HomeApps() {
 
   const gameContainerIsVisible = useOnScreen(gameContainerRef);
 
-  function moveLeft() {
+  const moveLeft = useCallback(() => {
     if (slideContainer) {
       slideContainer.scrollLeft -= slideContainer.clientWidth;
     }
-  }
+  }, [slideContainer]);
 
-  function moveRight() {
+  const moveRight = useCallback(() => {
     if (slideContainer) {
       slideContainer.scrollLeft += slideContainer.clientWidth;
     }
-  }
+  }, [slideContainer]);
 
   return (
     <div

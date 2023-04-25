@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Navbar from "../../components/Navbar";
@@ -9,13 +10,18 @@ import HomeFAQ from "../../components/HomeFAQ";
 import HomeFooter from "../../components/HomeFooter";
 import useMountTransition from "../../hooks/useMountTransition";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import theme from "../../theme/theme";
 import Sidebar from "../../components/Sidebar";
+import { useMemo } from "react";
 
 export default function Home() {
   const [sidebar, setSidebar] = useState(false);
   const hasTransitionedIn = useMountTransition(sidebar, 1000);
+
+  const openSidebar = useCallback(() => {
+    setSidebar(true);
+  }, [sidebar]);
 
   return (
     <>
@@ -39,7 +45,7 @@ export default function Home() {
                 color: theme.palette.secondary.light,
               },
             }}
-            onClick={() => setSidebar(true)}
+            onClick={() => openSidebar()}
           />
         )}
 

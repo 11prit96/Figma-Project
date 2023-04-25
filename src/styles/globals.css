@@ -27,7 +27,7 @@ body {
   opacity: 0;
   color: #ddd;
   font-size: 1.25rem;
-  transition: all 0.5s;
+  transition: all 0.75s;
 }
 
 .FAQhoverPrompt {
@@ -39,7 +39,7 @@ body {
   position: absolute;
   bottom: 2rem;
   left: 1rem;
-  transition: all 0.5s;
+  transition: all 0.75s;
 }
 
 .gridItem:hover .FAQtitle {
