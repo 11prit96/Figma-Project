@@ -17,7 +17,7 @@ import { useMemo } from "react";
 
 export default function Home() {
   const [sidebar, setSidebar] = useState(false);
-  const hasTransitionedIn = useMountTransition(sidebar, 1000);
+  const hasTransitionedIn = useMountTransition(sidebar, 500);
 
   const openSidebar = useCallback(() => {
     setSidebar(true);
